@@ -25,34 +25,42 @@ def get_deltas(x_values):
     return deltas
 
 
+def plot_graphs(x_axis_label, x_axis_values, y_axis_label, y_axis_values, r, c, p):
+    plt.subplot(3, 1, p)
+    plt.title(f"Value of {y_axis_label} against {x_axis_label} (r = {r})")
+    plt.xlabel(x_axis_label)
+    plt.ylabel(y_axis_label)
+    plt.plot(x_axis_values, y_axis_values, color=c, marker=".")
+
+
 def question_a():
     for r in R_VALUES:
+        plt.figure()
+
         x_values = get_x_values(r)
         iterations_x = np.arange(x_values.size)
-        plt.title(f"Value of X against Iterations (r = {r})")
-        plt.plot(iterations_x, x_values, color="r")
-        plt.xlabel("Iterations")
-        plt.ylabel("X")
-        plt.show()
+        plot_graphs("Iterations", iterations_x, "X", x_values, r, "r", 1)
 
         deltas = get_deltas(x_values)
         iterations_delta = np.arange(deltas.size)
-        plt.title(f"Value of Deltas against Iterations (r = {r})")
-        plt.plot(iterations_delta, deltas, color="g")
-        plt.xlabel("Iterations")
-        plt.ylabel("Deltas")
-        plt.show()
+        plot_graphs(
+            "Iterations",
+            iterations_delta,
+            r"$\Delta X = X_{n + 1} - X_n$",
+            deltas,
+            r,
+            "g",
+            2,
+        )
 
         successors = x_values[1:]
         predecessors = x_values[:-1]
-        plt.title(f"Value of Successors against Predecessors (r = {r})")
-        plt.xlabel("Predecessors")
-        plt.ylabel("Successors")
-        plt.plot(predecessors, successors, color="b")
-        plt.show()
+        plot_graphs(r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3)
 
+        plt.tight_layout()
+        plt.savefig(f"plot_r_{r}.png")
+        plt.show()
         plt.close()
-    return True
 
 
 def question_b():
