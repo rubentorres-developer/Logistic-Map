@@ -40,8 +40,10 @@ def question_a():
         plt.plot(it2, deltas)
         plt.show()
 
+        successors = x_values[1:]
+        predecessors = x_values[:-1]
         plt.title(f"Value of Successors against Predecessors (r = {r})")
-        plt.plot(x_values[1:], x_values[:-1])
+        plt.plot(predecessors, successors)
         plt.show()
 
         plt.close()
