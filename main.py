@@ -42,7 +42,7 @@ def question_a():
         plot_graphs("Iterations", iterations_x, "X", x_values, r, "r", 1)
 
         deltas = get_deltas(x_values)
-        iterations_delta = np.arange(deltas.size)
+        iterations_delta = np.arange(1, deltas.size + 1)
         plot_graphs(
             "Iterations",
             iterations_delta,
