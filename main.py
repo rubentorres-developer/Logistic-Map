@@ -58,7 +58,7 @@ def question_a():
         plot_graphs(r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3)
 
         plt.tight_layout()
-        plt.savefig(f"plot_r_{r}.png")
+        plt.savefig(f"./images/plot_r_{r}.png")
         plt.show()
         plt.close()
 
@@ -93,7 +93,7 @@ def question_b():
     plt.xlabel("Iterations")
     plt.ylabel("R")
     plt.plot(iteration_list, r_list, color="r", marker=".")
-    plt.savefig(f"chaotic_behavior_analysis.png")
+    plt.savefig(f"./images/chaotic_behavior_analysis.png")
     plt.show()
     plt.close()
 
