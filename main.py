@@ -64,12 +64,43 @@ def question_a():
 
 
 def question_b():
-    return True
+    plt.figure()
+
+    epsilon = 0.001
+    delta = -0.1
+    threshold_diff = 0.5
+    chaos_regime_start = 3.6
+
+    iteration_list = []
+    r_list = []
+
+    r = 4
+    while r >= chaos_regime_start:
+        x_a = STARTING_X
+        x_b = x_a - epsilon
+
+        iterations = 0
+        while abs(x_a - x_b) < threshold_diff:
+            x_a = logistic(r, x_a)
+            x_b = logistic(r, x_b)
+            iterations += 1
+
+        iteration_list.append(iterations)
+        r_list.append(r)
+        r += delta
+
+    plt.title("Value of R against Iterations")
+    plt.xlabel("Iterations")
+    plt.ylabel("R")
+    plt.plot(iteration_list, r_list, color="r", marker=".")
+    plt.savefig(f"chaotic_behavior_analysis.png")
+    plt.show()
+    plt.close()
 
 
 def main():
     question_a()
-    return True
+    question_b()
 
 
 if __name__ == "__main__":
