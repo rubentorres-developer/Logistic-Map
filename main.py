@@ -25,12 +25,12 @@ def get_deltas(x_values):
     return deltas
 
 
-def plot_graphs(x_axis_label, x_axis_values, y_axis_label, y_axis_values, r, c, p):
+def plot_graphs(x_axis_label, x_axis_values, y_axis_label, y_axis_values, r, c, p, l):
     plt.subplot(3, 1, p)
     plt.title(f"Value of {y_axis_label} against {x_axis_label} (r = {r})")
     plt.xlabel(x_axis_label)
     plt.ylabel(y_axis_label)
-    plt.plot(x_axis_values, y_axis_values, color=c, marker=".")
+    plt.plot(x_axis_values, y_axis_values, color=c, marker=".", linestyle=l)
 
 
 def question_a():
@@ -39,7 +39,7 @@ def question_a():
 
         x_values = get_x_values(r)
         iterations_x = np.arange(x_values.size)
-        plot_graphs("Iterations", iterations_x, "X", x_values, r, "r", 1)
+        plot_graphs("Iterations", iterations_x, "X", x_values, r, "r", 1, "-")
 
         deltas = get_deltas(x_values)
         iterations_delta = np.arange(1, deltas.size + 1)
@@ -51,11 +51,12 @@ def question_a():
             r,
             "g",
             2,
+            "-"
         )
 
         successors = x_values[1:]
         predecessors = x_values[:-1]
-        plot_graphs(r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3)
+        plot_graphs(r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3, "None")
 
         plt.tight_layout()
         plt.savefig(f"./images/plot_r_{r}.png")
@@ -92,7 +93,7 @@ def question_b():
     plt.title("Value of R against Iterations")
     plt.xlabel("Iterations")
     plt.ylabel("R")
-    plt.plot(iteration_list, r_list, color="r", marker=".")
+    plt.plot(iteration_list, r_list, color="r", marker=".", linestyle="-")
     plt.savefig(f"./images/chaotic_behavior_analysis.png")
     plt.show()
     plt.close()
