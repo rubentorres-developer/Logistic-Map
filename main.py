@@ -51,12 +51,14 @@ def question_a():
             r,
             "g",
             2,
-            "-"
+            "-",
         )
 
         successors = x_values[1:]
         predecessors = x_values[:-1]
-        plot_graphs(r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3, "None")
+        plot_graphs(
+            r"$X_n$", predecessors, r"$X_{n + 1}$", successors, r, "b", 3, "None"
+        )
 
         plt.tight_layout()
         plt.savefig(f"./images/plot_r_{r}.png")
