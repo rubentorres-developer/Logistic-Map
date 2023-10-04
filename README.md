@@ -1,6 +1,6 @@
 # Logistic-Map
 
-This small project was developed during the Virtual Life curricular unit at the Faculdade de Ciências da Universidade de Lisboa.
+This small project was developed during the Vida Artificial (2023/24) curricular unit at the Faculdade de Ciências da Universidade de Lisboa.
 
 **How to Run:**
 
